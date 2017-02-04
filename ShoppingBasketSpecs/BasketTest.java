@@ -32,4 +32,13 @@ public class BasketTest{
     assertEquals(0, basket.itemCount());
   }
 
+  @Test
+  public void canEmptyBasket(){
+    basket.addItem(item);
+    basket.addItem(item);
+    assertEquals(2, basket.itemCount());
+    basket.emptyBasket();
+    assertEquals(0, basket.itemCount());
+  }
+
 }
