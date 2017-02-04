@@ -19,4 +19,8 @@ public class Basket{
     items.add(item);
   }
 
+  public void removeItem(Purchasable item){
+    items.remove(item);
+  }
+
 }
