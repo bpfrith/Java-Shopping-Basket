@@ -15,4 +15,8 @@ public class Basket{
     return items.size();
   }
 
+  public void addItem(Purchasable item){
+    items.add(item);
+  }
+
 }

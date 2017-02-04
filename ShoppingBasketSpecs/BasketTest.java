@@ -15,8 +15,14 @@ public class BasketTest{
   }
 
   @Test
-    public void startsEmpty(){
-      assertEquals(0, basket.itemCount());
-    }
+  public void startsEmpty(){
+    assertEquals(0, basket.itemCount());
+  }
+
+  @Test
+  public void canAddItem(){
+    basket.addItem(item);
+    assertEquals(1, basket.itemCount());
+  }
 
 }
