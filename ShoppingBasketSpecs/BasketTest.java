@@ -41,4 +41,11 @@ public class BasketTest{
     assertEquals(0, basket.itemCount());
   }
 
+  @Test
+  public void canCalculateSubTotal(){
+    basket.addItem(item);
+    basket.calculateSubTotal();
+    assertEquals(5.00, basket.getSubTotal(), 0.01);
+  }
+
 }
