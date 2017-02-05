@@ -50,17 +50,17 @@ public class BasketTest{
   }
 
   @Test
-    public void canModifyTotal(){
-      basket.modifyTotal(20.00);
-      assertEquals(20.00, basket.getTotal(), 0.01);
-    }
+  public void canModifyTotal(){
+    basket.modifyTotal(20.00);
+    assertEquals(20.00, basket.getTotal(), 0.01);
+  }
 
-    @Test
-      public void canGetItems(){
-        basket.addItem(item);
-        ArrayList<Purchasable> currentItems = basket.getItems();
-        Item currentItem = (Item) currentItems.get(0);
-        assertEquals("Cheese", currentItem.getItemName());
-      }
+  @Test
+  public void canGetItems(){
+    basket.addItem(item);
+    ArrayList<Purchasable> currentItems = basket.getItems();
+    Item currentItem = (Item) currentItems.get(0);
+    assertEquals("Cheese", currentItem.getItemName());
+  }
 
 }

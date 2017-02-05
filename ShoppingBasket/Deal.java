@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Deal implements Dealable{
+
   private Basketable basket;
   private ArrayList<String> itemsBOGOF;
   private ArrayList<Purchasable> itemsInBasket;
@@ -19,6 +20,22 @@ public class Deal implements Dealable{
     loyaltyCard = false;
   }
 
+  public void setBOGOF(boolean buyOneGetOneFree){
+    this.buyOneGetOneFree = buyOneGetOneFree;
+  }
+
+  public void setTenPercentOff(boolean tenPercentOff){
+    this.tenPercentOff = tenPercentOff;
+  }
+
+  public void setLoyaltyCard(boolean loyaltyCard){
+    this.loyaltyCard = loyaltyCard;
+  }
+
+  public void addBOGOFItem(String itemName){
+    itemsBOGOF.add(itemName);
+  }
+
   public double checkForDeals(Basketable basket){
     if(buyOneGetOneFree){
       basket.modifyTotal(buyOneGetOneFree(basket));
@@ -26,17 +43,13 @@ public class Deal implements Dealable{
       basket.calculateSubTotal();
       basket.modifyTotal(basket.getSubTotal());
     }
-      // if(tenPercentOff){
-      //   basket.modifyTotal(tenPercentOff(basket));
-      // }
-      // if(loyaltyCard){
-      //   basket.modifyTotal(twoPercentOffWithLoyaltyCard(basket));
-      // }
+    if(tenPercentOff){
+      basket.modifyTotal(tenPercentOff(basket));
+    }
+    if(loyaltyCard){
+      basket.modifyTotal(twoPercentOff(basket));
+    }
     return basket.getTotal();
-  }
-
-  public void setBOGOF(boolean buyOneGetOneFree){
-    this.buyOneGetOneFree = buyOneGetOneFree;
   }
 
   private double buyOneGetOneFree(Basketable basket){
@@ -66,12 +79,21 @@ public class Deal implements Dealable{
       itemQuantities.put(item.getItemName(), 0);
       total -= totalDeduction;
     }
-
     return total;
   }
 
-  public void addBOGOFItem(String itemName){
-    itemsBOGOF.add(itemName);
+  private double tenPercentOff(Basketable basket){
+    double subTotal = basket.getTotal();
+    if(subTotal >= 20){
+      basket.modifyTotal(subTotal * 0.90);
+    }
+    return basket.getTotal();
+  }
+
+  private double twoPercentOff(Basketable basket){
+    double subTotal = basket.getTotal();
+    basket.modifyTotal(subTotal * 0.98);
+    return basket.getTotal();
   }
 
 }
