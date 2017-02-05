@@ -7,7 +7,7 @@ public class ItemTest {
 
   @Before
   public void before() {
-    item = new Item("Tooth Brush", 2.60, 1);
+    item = new Item("Tooth Brush", 2.60);
   }
 
   @Test
@@ -18,11 +18,6 @@ public class ItemTest {
   @Test
   public void hasPrice(){
     assertEquals(item.getPrice(), 2.60, 0.01);
-  }
-
-  @Test
-  public void hasQuantity(){
-    assertEquals(item.getQuantity(), 1);
   }
 
 }

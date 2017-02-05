@@ -10,7 +10,7 @@ public class BasketTest{
 
   @Before
   public void before(){
-    item = new Item("Cheese", 5.00, 3);
+    item = new Item("Cheese", 5.00);
     basket = new Basket();
   }
 
