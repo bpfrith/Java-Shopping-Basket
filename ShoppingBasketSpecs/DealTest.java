@@ -1,15 +1,15 @@
-import models.*;
+import ShoppingBasket.*;
 import Behaviours.*;
 import org.junit.*;
 import static org.junit.Assert.*;
 
-public class DealCheckerTest {
+public class DealTest{
 
-  Dealable dealChecker;
+  Dealable deal;
   Basketable basket;
-  Itemable itemToothBrush;
-  Itemable itemCheese;
-  Itemable itemOstrichSteaks;
+  Purchasable itemToothBrush;
+  Purchasable itemCheese;
+  Purchasable itemOstrichSteaks;
 
   @Before
   public void before(){
@@ -21,14 +21,16 @@ public class DealCheckerTest {
   }
 
   @Test
-    public void canPerformBOGOF(){
-      dealChecker.setBOGOF(true);
-      dealChecker.addBOGOFItem("Cheese");
+  public void canPerformBOGOF(){
+    deal.setBOGOF(true);
+    deal.addBOGOFItem("Cheese");
 
-      basket.addItem(itemCheese);
-      basket.addItem(itemCheese);
-      basket.addItem(itemCheese);
+    basket.addItem(itemCheese);
+    basket.addItem(itemCheese);
+    basket.addItem(itemCheese);
 
-      basket.checkDeals(deal);
-      assertEquals(15.00, basket.getTotal(), 0.01);
-    }
+    basket.checkDeals(deal);
+    assertEquals(10.00, basket.getTotal(), 0.01);
+  }
+
+}

@@ -2,7 +2,7 @@ package ShoppingBasket;
 import Behaviours.*;
 import java.util.ArrayList;
 
-public class Basket{
+public class Basket implements Basketable{
 
   private ArrayList<Purchasable> items;
   private Double subTotal;
@@ -30,7 +30,7 @@ public class Basket{
 
   public void calculateSubTotal(){
     double n = 0.00;
-   for(int i = 0; i < itemCount(); i++){
+    for(int i = 0; i < itemCount(); i++){
      n += items.get(i).getPrice();
    }
    subTotal = n;
@@ -42,6 +42,18 @@ public class Basket{
 
  public double getTotal(){
    return total;
+ }
+
+ public void checkDeals(Dealable deal){
+   total = deal.checkForDeals(this);
+ }
+
+ public void modifyTotal(Double newTotal){
+   this.total = newTotal;
+ }
+
+ public ArrayList<Purchasable> getItems(){
+   return items;
  }
 
 }

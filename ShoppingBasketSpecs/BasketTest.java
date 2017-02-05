@@ -2,6 +2,7 @@ import org.junit.*;
 import static org.junit.Assert.*;
 import ShoppingBasket.*;
 import Behaviours.*;
+import java.util.ArrayList;
 
 public class BasketTest{
 
@@ -47,5 +48,19 @@ public class BasketTest{
     basket.calculateSubTotal();
     assertEquals(5.00, basket.getSubTotal(), 0.01);
   }
+
+  @Test
+    public void canModifyTotal(){
+      basket.modifyTotal(20.00);
+      assertEquals(20.00, basket.getTotal(), 0.01);
+    }
+
+    @Test
+      public void canGetItems(){
+        basket.addItem(item);
+        ArrayList<Purchasable> currentItems = basket.getItems();
+        Item currentItem = (Item) currentItems.get(0);
+        assertEquals("Cheese", currentItem.getItemName());
+      }
 
 }
